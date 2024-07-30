@@ -31,10 +31,11 @@
               "client_type": 3
             },
             {
-              "client_id": "669571586292-728i0iebq73r205hp36hgansdv0jknut.apps.googleusercontent.com",
+              "client_id": "669571586292-2sfq6064vq5d3hnhrb3iod30kpmhplts.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.mg.cotton.textile.calculator.kt.one.own.mgCottonTextileCalculator"
+                "bundle_id": "com.mg.cotton.textile.calculator.kt.one.own.mgCottonTextileCalculator",
+                "app_store_id": "6605934148"
               }
             }
           ]
@@ -58,6 +59,14 @@
           }
         },
         {
+          "client_id": "669571586292-m1co8ji26hopne2jsq0hjmffhcfb0ueo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mg.cotton.textile.calculator.kt.one.own.mg_cotton_textile_calculator",
+            "certificate_hash": "b8c5f4b8121707b46c23f1c655a24e61b7753e2c"
+          }
+        },
+        {
           "client_id": "669571586292-9vbivp7fq9uihsrvgdldgb47b003r99f.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -75,10 +84,11 @@
               "client_type": 3
             },
             {
-              "client_id": "669571586292-728i0iebq73r205hp36hgansdv0jknut.apps.googleusercontent.com",
+              "client_id": "669571586292-2sfq6064vq5d3hnhrb3iod30kpmhplts.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.mg.cotton.textile.calculator.kt.one.own.mgCottonTextileCalculator"
+                "bundle_id": "com.mg.cotton.textile.calculator.kt.one.own.mgCottonTextileCalculator",
+                "app_store_id": "6605934148"
               }
             }
           ]

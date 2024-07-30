@@ -2,24 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CLIENT_ID</key>
-	<string>669571586292-728i0iebq73r205hp36hgansdv0jknut.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.669571586292-728i0iebq73r205hp36hgansdv0jknut</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>669571586292-i8rp0qjg42dqbv274io4ag0canka61f2.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA0gswF8msW4XuM2Yd9x06nbKREToelKzg</string>
+	<string>AIzaSyB0PsgCaosuv63xl-rcJckYBz1XTk-pbWE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>669571586292</string>
+	<string>912402332756</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.mg.cotton.textile.calculator.kt.one.own.mgCottonTextileCalculator</string>
 	<key>PROJECT_ID</key>
-	<string>mg-textile-calculator</string>
+	<string>kt-mg-textile-calculator</string>
 	<key>STORAGE_BUCKET</key>
-	<string>mg-textile-calculator.appspot.com</string>
+	<string>kt-mg-textile-calculator.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:669571586292:ios:6b5cc658301e3a2c2ba6a1</string>
+	<string>1:912402332756:ios:63baaa9a41289e65f001c1</string>
 </dict>
 </plist>

@@ -108,9 +108,8 @@ class _AdminPanelHomeState extends State<AdminPanelHome> {
                     children: <Widget>[
                       BoxContainer(
                         icon: Icon(Icons.swipe_up),
-                        title: 'Latest 20',
-                        subTitle:
-                            firebaseConfigrationInside.todayJointedUserCountg,
+                        title: 'Latest',
+                        subTitle: '20',
                         onTap: () {
                           Navigator.push(
                               context,

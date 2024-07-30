@@ -1993,75 +1993,127 @@ class _ReverseGinningState extends State<ReverseGinning> {
   double quintalReverseanswer2 = 0;
   double quintalReverseanswerMaund2 = 0;
 
-  void _reverseUpdateValuesForCalculator1() {
-    double storeInputKapas1 = double.tryParse(reverseinputkapas1.text) ?? 0;
-    double storeInputExpense1 = double.tryParse(reverseinputexpense1.text) ?? 0;
-    double storeInputPercentageExpense1 =
-        double.tryParse(reverseinputexpensePercetnage1.text) ?? 0;
-    double storeInputKapasia1 = double.tryParse(reverseinputkapasia1.text) ?? 0;
-    double storeInputUtaro1 = double.tryParse(reverseinpututaro1.text) ?? 0;
-    double storeInputGhati1 = double.tryParse(reverseinputghati1.text) ?? 0;
-
-    double a1 = (storeInputKapas1 * 0.2812 / 5);
-    double a2 = a1 * storeInputUtaro1;
-    double a3 = 100 - storeInputUtaro1 - storeInputGhati1;
-    double a4 = a3 * storeInputKapasia1;
-    double a5 = a4 + a2;
-    double a6 = a5 / 100;
-    double percentexpense = (a6 * storeInputPercentageExpense1) / 100;
-    double f = a6 - storeInputExpense1 - percentexpense;
-
-    //For Maund
-    double maund = storeInputKapas1 / 9.53;
-
-    setState(() {
-      reversedubanswer1 = f;
-      reverseanswer1 = double.parse(f.toStringAsFixed(2));
-
-      reversedubanswerMaund = maund;
-      reverseanswerMaund = double.parse(maund.toStringAsFixed(2));
-
-      //kappas diff
-      reversedubdiff = reversedubanswer1 - reversedubanswer2;
-      reversediff = double.parse(reversedubdiff.toStringAsFixed(2)).abs();
-
-      //maund diff
-      reversedubdiffMaund = reversedubanswerMaund - reversedubanswerMaund2;
-      reversediffMaund = double.parse(reversedubdiffMaund.toStringAsFixed(2));
-    });
-  }
-
-  void _reverseUpdateValuesForCalculator2() {
-    double storeInputKapas2 = double.tryParse(reverseinputkapas2.text) ?? 0;
-    double storeInputExpense2 = double.tryParse(reverseinputexpense2.text) ?? 0;
-    double storeInputPercentageExpense2 =
-        double.tryParse(reverseinputexpensePercetnage2.text) ?? 0;
-    double storeInputKapasia2 = double.tryParse(reverseinputkapasia2.text) ?? 0;
-    double storeInputUtaro2 = double.tryParse(reverseinpututaro2.text) ?? 0;
-    double storeInputGhati2 = double.tryParse(reverseinputghati2.text) ?? 0;
-
-    double a1 = (storeInputKapas2 * 0.2812 / 5);
-    double a2 = a1 * storeInputUtaro2;
-    double a3 = 100 - storeInputUtaro2 - storeInputGhati2;
-    double a4 = a3 * storeInputKapasia2;
-    double a5 = a4 + a2;
-    double a6 = a5 / 100;
-    double percentexpense = (a6 * storeInputPercentageExpense2) / 100;
-    double f = a6 - storeInputExpense2 - percentexpense;
-
-    double maund = storeInputKapas2 / 9.53;
-
-    setState(() {
-      reverseanswerMaund2 = double.parse(maund.toStringAsFixed(2));
-      reverseanswer2 = double.parse(f.toStringAsFixed(2));
-      reversedubanswer2 = f;
-      reversedubdiff = reversedubanswer1 - reversedubanswer2;
-      reversediff = double.parse(reversedubdiff.toStringAsFixed(2)).abs();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    var dropDownValue = Provider.of<DropdownState>(context).selectedValue;
+
+    final bool isAndhraPradesh = dropDownValue == 'Andhra Pradesh';
+    final bool isGujarat = dropDownValue == 'Gujarat';
+    final bool isKarnataka = dropDownValue == 'Karnataka';
+    final bool isLowerRajsthan = dropDownValue == 'Lower Rajasthan';
+    final bool isMadhyaPradesh = dropDownValue == 'Madhya Pradesh';
+    final bool isMaharashtra = dropDownValue == 'Maharashtra';
+    final bool isNorthZone = dropDownValue == 'North Zone';
+    final bool isTelengana = dropDownValue == 'Telangana';
+    void _reverseUpdateValuesForCalculator1() {
+      double storeInputKapas1 = double.tryParse(reverseinputkapas1.text) ?? 0;
+      double storeInputExpense1 =
+          double.tryParse(reverseinputexpense1.text) ?? 0;
+      double storeInputPercentageExpense1 =
+          double.tryParse(reverseinputexpensePercetnage1.text) ?? 0;
+      double storeInputKapasia1 =
+          double.tryParse(reverseinputkapasia1.text) ?? 0;
+      double storeInputUtaro1 = double.tryParse(reverseinpututaro1.text) ?? 0;
+      double storeInputGhati1 = double.tryParse(reverseinputghati1.text) ?? 0;
+
+      // double sum1 = (storeInputKapas1 + storeInputExpense1 + percentexpense);
+      double a1 = 0;
+      if (isGujarat) {
+        a1 = (storeInputKapas1 * 0.2812 / 5);
+      } else if (isNorthZone) {
+        a1 = (storeInputKapas1 * 9.53 * 0.2812);
+      } else {
+        a1 = (storeInputKapas1 * 0.2812);
+      }
+      double a2 = a1 * storeInputUtaro1;
+      double a3 = 100 - storeInputUtaro1 - storeInputGhati1;
+      double a4 = a3 * storeInputKapasia1;
+      double a5 = a4 + a2;
+      double a6 = 0;
+      // if(isGujarat)
+      a6 = a5 / 100;
+      double percentexpense = (a6 * storeInputPercentageExpense1) / 100;
+
+      double f = 0;
+      if (isMadhyaPradesh ||
+          isMadhyaPradesh ||
+          isAndhraPradesh ||
+          isTelengana ||
+          isKarnataka) {
+        f = a6 - percentexpense - (storeInputExpense1 / 5);
+      } else {
+        f = a6 - storeInputExpense1 - percentexpense;
+      }
+      //For Maund
+      double maund = storeInputKapas1 / 9.53;
+
+      setState(() {
+        reversedubanswer1 = f;
+        reverseanswer1 = double.parse(f.toStringAsFixed(2));
+
+        reversedubanswerMaund = maund;
+        reverseanswerMaund = double.parse(maund.toStringAsFixed(2));
+
+        //kappas diff
+        reversedubdiff = reversedubanswer1 - reversedubanswer2;
+        reversediff = double.parse(reversedubdiff.toStringAsFixed(2)).abs();
+
+        //maund diff
+        reversedubdiffMaund = reversedubanswerMaund - reversedubanswerMaund2;
+        reversediffMaund = double.parse(reversedubdiffMaund.toStringAsFixed(2));
+      });
+    }
+
+    void _reverseUpdateValuesForCalculator2() {
+      double storeInputKapas2 = double.tryParse(reverseinputkapas2.text) ?? 0;
+      double storeInputExpense2 =
+          double.tryParse(reverseinputexpense2.text) ?? 0;
+      double storeInputPercentageExpense2 =
+          double.tryParse(reverseinputexpensePercetnage2.text) ?? 0;
+      double storeInputKapasia2 =
+          double.tryParse(reverseinputkapasia2.text) ?? 0;
+      double storeInputUtaro2 = double.tryParse(reverseinpututaro2.text) ?? 0;
+      double storeInputGhati2 = double.tryParse(reverseinputghati2.text) ?? 0;
+
+      double a1 = 0;
+      if (isGujarat) {
+        a1 = (storeInputKapas2 * 0.2812 / 5);
+      } else if (isNorthZone) {
+        a1 = (storeInputKapas2 * 9.53 * 0.2812);
+      } else {
+        a1 = (storeInputKapas2 * 0.2812);
+      }
+      double a2 = a1 * storeInputUtaro2;
+      double a3 = 100 - storeInputUtaro2 - storeInputGhati2;
+      double a4 = a3 * storeInputKapasia2;
+      double a5 = a4 + a2;
+      double a6 = 0;
+      // if(isGujarat)
+      a6 = a5 / 100;
+      double percentexpense = (a6 * storeInputPercentageExpense2) / 100;
+
+      double f = 0;
+      if (isMadhyaPradesh ||
+          isMadhyaPradesh ||
+          isAndhraPradesh ||
+          isTelengana ||
+          isKarnataka) {
+        f = a6 - percentexpense - (storeInputExpense2 / 5);
+      } else {
+        f = a6 - storeInputExpense2 - percentexpense;
+      }
+
+      double maund = storeInputKapas2 / 9.53;
+
+      setState(() {
+        reverseanswerMaund2 = double.parse(maund.toStringAsFixed(2));
+        reverseanswer2 = double.parse(f.toStringAsFixed(2));
+        reversedubanswer2 = f;
+        reversedubdiff = reversedubanswer1 - reversedubanswer2;
+        reversediff = double.parse(reversedubdiff.toStringAsFixed(2)).abs();
+      });
+    }
+
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: [
@@ -2080,7 +2132,7 @@ class _ReverseGinningState extends State<ReverseGinning> {
             GlobalRowCompareWidget2textfielsWithOnchanges(
                 title: 'Cotton Rate',
                 controller1: reverseinputkapas1,
-                subtitle: '₹/Candy',
+                subtitle: isNorthZone ? '₹/Maund' : '₹/Candy',
                 height: 0,
                 width: 0,
                 controller2: reverseinputkapas2,
@@ -2095,7 +2147,15 @@ class _ReverseGinningState extends State<ReverseGinning> {
             GlobalRowCompareWidget2textfielsWithOnchanges(
                 title: 'Expenses',
                 controller1: reverseinputexpense1,
-                subtitle: '₹/20Kg',
+                subtitle: isGujarat
+                    ? '₹/20kg'
+                    : isMaharashtra
+                        ? '₹/Quintal'
+                        : isNorthZone
+                            ? '₹/Quintal'
+                            : isLowerRajsthan
+                                ? '₹/Quintal'
+                                : '₹/Candy',
                 height: 0,
                 width: 0,
                 controller2: reverseinputexpense2,
@@ -2107,25 +2167,26 @@ class _ReverseGinningState extends State<ReverseGinning> {
                 }),
 
             // Expense
-            GlobalRowCompareWidget2textfielsWithOnchanges(
-                title: 'Expenses %',
-                controller1: reverseinputexpensePercetnage1,
-                subtitle: '%',
-                height: 0,
-                width: 0,
-                controller2: reverseinputexpensePercetnage2,
-                onchaned1: (string) {
-                  _reverseUpdateValuesForCalculator1();
-                },
-                onchane2: (string) {
-                  _reverseUpdateValuesForCalculator2();
-                }),
+            if (isNorthZone || isLowerRajsthan)
+              GlobalRowCompareWidget2textfielsWithOnchanges(
+                  title: 'Expenses %',
+                  controller1: reverseinputexpensePercetnage1,
+                  subtitle: '%',
+                  height: 0,
+                  width: 0,
+                  controller2: reverseinputexpensePercetnage2,
+                  onchaned1: (string) {
+                    _reverseUpdateValuesForCalculator1();
+                  },
+                  onchane2: (string) {
+                    _reverseUpdateValuesForCalculator2();
+                  }),
 
             // Cotton Seed
             GlobalRowCompareWidget2textfielsWithOnchanges(
                 title: 'Cotton Seed',
                 controller1: reverseinputkapasia1,
-                subtitle: '₹/20Kg',
+                subtitle: isGujarat ? '₹/20kg' : '₹/Quintal',
                 height: 0,
                 width: 0,
                 controller2: reverseinputkapasia2,
@@ -2170,20 +2231,23 @@ class _ReverseGinningState extends State<ReverseGinning> {
             GlobalRowCompareWidget2StreamBuilderWithAnswer(
               result1: reverseanswer1,
               result2: reverseanswer2,
-              subtext1: '₹/20Kg',
-              subtext2: '₹/20Kg',
+              subtext1: isGujarat ? '₹/20kg' : '₹/Quintal',
+              subtext2: isGujarat ? '₹/20kg' : '₹/Quintal',
               title1: 'Kapas Coast',
               title2: 'Padtar',
             ),
 
             //Maund Difference
-            GlobalRowCompareWidget2StreamBuilderWithAnswer(
-              result1: reverseanswerMaund,
-              result2: reverseanswerMaund2,
-              subtext1: '₹/Maund',
-              subtext2: '₹/Maund',
-              title1: 'Candy Maund',
-              title2: 'Padtar',
+            Visibility(
+              visible: false,
+              child: GlobalRowCompareWidget2StreamBuilderWithAnswer(
+                result1: reverseanswerMaund,
+                result2: reverseanswerMaund2,
+                subtext1: '₹/Maund',
+                subtext2: '₹/Maund',
+                title1: 'Candy Maund',
+                title2: 'Padtar',
+              ),
             ),
 
             GlobalRowCompareWidget2Button(
@@ -2252,15 +2316,18 @@ class _ReverseGinningState extends State<ReverseGinning> {
             // Khandi Diffrnce or Stram result
             SizedBox(height: 20.h),
             GlobalResultBuilderForResults(
-              substreamtext: '₹/20Kg',
+              substreamtext: isGujarat ? '₹/20kg' : '₹/Quintal',
               streamtitletext: 'Kapas Difference',
               result: reversediff,
             ),
 
-            GlobalResultBuilderForResults(
-              substreamtext: '₹/Maund',
-              streamtitletext: 'Kapas Difference',
-              result: reversediffMaund,
+            Visibility(
+              visible: false,
+              child: GlobalResultBuilderForResults(
+                substreamtext: '₹/Maund',
+                streamtitletext: 'Kapas Difference',
+                result: reversediffMaund,
+              ),
             ),
 
             SizedBox(

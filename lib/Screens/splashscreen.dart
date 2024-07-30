@@ -5,7 +5,7 @@ import 'package:simple_gradient_text/simple_gradient_text.dart';
 import '../Constants/Global_Variables/Screen Util Size.dart';
 import '../Constants/Global_Variables/variables/variables.dart';
 import 'package:provider/provider.dart';
-
+import 'dart:io';
 import '../StageManagementClass/provider_state_management.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,29 +18,39 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   Future<void> _checkLoginStatus() async {
-    final firebaseConfigration =
-        Provider.of<firebaseConfigrations>(context, listen: false);
+    if (!Platform.isIOS) {
+      final firebaseConfigration =
+          Provider.of<firebaseConfigrations>(context, listen: false);
 
-    // await Future.delayed(
-    //     Duration(milliseconds: 100)); // Simulate a delay for the splash screen
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String lastScreen = prefs.getString('last_screen') ?? 'home_screen';
-    if (firebaseConfigration.selectedValue.currentUser != null) {
-      // User is logged in, fetch user data
-      await firebaseConfigration.fetchUserData();
+      // await Future.delayed(
+      //     Duration(milliseconds: 100)); // Simulate a delay for the splash screen
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String lastScreen = prefs.getString('last_screen') ?? 'home_screen';
+      if (firebaseConfigration.selectedValue.currentUser != null) {
+        // User is logged in, fetch user data
+        await firebaseConfigration.fetchUserData();
 
-      // Navigate User to previously open page
-      if (firebaseConfigration.userRoleg == '0')
-        Navigator.pushReplacementNamed(context, '/$lastScreen');
+        // Navigate User to previously open page
+        if (firebaseConfigration.userRoleg == '0')
+          Navigator.pushReplacementNamed(context, '/$lastScreen');
 
-      // Admin Navigate To Admin Page
-      if (firebaseConfigration.userRoleg == '1' ||
-          firebaseConfigration.userRoleg == '2')
-        Navigator.pushReplacementNamed(context, '/adminPanel_home');
-    } else {
-      // User is not logged in, navigate to login screen
-      await Future.delayed(Duration(milliseconds: 1000));
-      Navigator.pushReplacementNamed(context, '/login_screen');
+        // Admin Navigate To Admin Page
+        if (firebaseConfigration.userRoleg == '1' ||
+            firebaseConfigration.userRoleg == '2')
+          Navigator.pushReplacementNamed(context, '/adminPanel_home');
+      } else {
+        // User is not logged in, navigate to login screen
+        await Future.delayed(Duration(milliseconds: 1000));
+        Navigator.pushReplacementNamed(context, '/login_screen');
+      }
+    }
+    if (Platform.isIOS) {
+      await Future.delayed(Duration(
+          milliseconds: 500)); // Simulate a delay for the splash screen
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String lastScreen = prefs.getString('last_screen') ?? 'home_screen';
+      Navigator.pushReplacementNamed(context, '/$lastScreen');
+      print('This is IOS Platform');
     }
   }
 
@@ -102,6 +112,7 @@ class _SplashScreenState extends State<SplashScreen>
                   Colors.teal,
                 ],
               ),
+              Padding(padding: EdgeInsets.only(bottom: 10))
             ],
           )
         ],

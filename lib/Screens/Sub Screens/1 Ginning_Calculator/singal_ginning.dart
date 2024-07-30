@@ -1068,35 +1068,6 @@ class GinningReverse extends StatefulWidget {
 }
 
 class _GinningReverseState extends State<GinningReverse> {
-  void _reverseUpdateValuesForCalculator1() {
-    double storeInputKapas1 = double.tryParse(reverseinputkapas1.text) ?? 0;
-    double storeInputExpense1 = double.tryParse(reverseinputexpense1.text) ?? 0;
-    double storeInputPercentageExpense1 =
-        double.tryParse(reverseinputexpensePercetnage1.text) ?? 0;
-
-    double storeInputKapasia1 = double.tryParse(reverseinputkapasia1.text) ?? 0;
-    double storeInputUtaro1 = double.tryParse(reverseinpututaro1.text) ?? 0;
-    double storeInputGhati1 = double.tryParse(reverseinputghati1.text) ?? 0;
-
-    // double sum1 = (storeInputKapas1 + storeInputExpense1 + percentexpense);
-    double a1 = (storeInputKapas1 * 0.2812 / 5);
-    double a2 = a1 * storeInputUtaro1;
-    double a3 = 100 - storeInputUtaro1 - storeInputGhati1;
-    double a4 = a3 * storeInputKapasia1;
-    double a5 = a4 + a2;
-    double a6 = a5 / 100;
-    double percentexpense = (a6 * storeInputPercentageExpense1) / 100;
-    double f = a6 - storeInputExpense1 - percentexpense;
-
-    //For Maund
-    double maund = storeInputKapas1 / 9.53;
-
-    setState(() {
-      reverseanswer = double.parse(f.toStringAsFixed(2));
-      reverseanswerMaund = double.parse(maund.toStringAsFixed(2));
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     var dropDownValue = Provider.of<DropdownState>(context).selectedValue;
@@ -1109,6 +1080,57 @@ class _GinningReverseState extends State<GinningReverse> {
     final bool isMaharashtra = dropDownValue == 'Maharashtra';
     final bool isNorthZone = dropDownValue == 'North Zone';
     final bool isTelengana = dropDownValue == 'Telangana';
+
+    void _reverseUpdateValuesForCalculator1() {
+      double storeInputKapas1 = double.tryParse(reverseinputkapas1.text) ?? 0;
+      double storeInputExpense1 =
+          double.tryParse(reverseinputexpense1.text) ?? 0;
+      double storeInputPercentageExpense1 =
+          double.tryParse(reverseinputexpensePercetnage1.text) ?? 0;
+
+      double storeInputKapasia1 =
+          double.tryParse(reverseinputkapasia1.text) ?? 0;
+      double storeInputUtaro1 = double.tryParse(reverseinpututaro1.text) ?? 0;
+      double storeInputGhati1 = double.tryParse(reverseinputghati1.text) ?? 0;
+
+      // double sum1 = (storeInputKapas1 + storeInputExpense1 + percentexpense);
+      double a1 = 0;
+      if (isGujarat) {
+        a1 = (storeInputKapas1 * 0.2812 / 5);
+      } else if (isNorthZone) {
+        a1 = (storeInputKapas1 * 9.53 * 0.2812);
+      } else {
+        a1 = (storeInputKapas1 * 0.2812);
+      }
+      double a2 = a1 * storeInputUtaro1;
+      double a3 = 100 - storeInputUtaro1 - storeInputGhati1;
+      double a4 = a3 * storeInputKapasia1;
+      double a5 = a4 + a2;
+      double a6 = 0;
+      // if(isGujarat)
+      a6 = a5 / 100;
+      double percentexpense = (a6 * storeInputPercentageExpense1) / 100;
+
+      double f = 0;
+      if (isMadhyaPradesh ||
+          isMadhyaPradesh ||
+          isAndhraPradesh ||
+          isTelengana ||
+          isKarnataka) {
+        f = a6 - percentexpense - (storeInputExpense1 / 5);
+      } else {
+        f = a6 - storeInputExpense1 - percentexpense;
+      }
+
+      //For Maund
+      double maund = storeInputKapas1 / 9.53;
+
+      setState(() {
+        reverseanswer = double.parse(f.toStringAsFixed(2));
+        reverseanswerMaund = double.parse(maund.toStringAsFixed(2));
+      });
+    }
+
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: [
@@ -1198,16 +1220,19 @@ class _GinningReverseState extends State<GinningReverse> {
 
             // Stram result
             GlobalResultBuilderForResults(
-              substreamtext: '₹/20Kg',
+              substreamtext: isGujarat ? '₹/20kg' : '₹/Quintal',
               streamtitletext: 'Kapas Coast',
               result: reverseanswer,
             ),
 
             //Maund Result
-            GlobalResultBuilderForResults(
-              substreamtext: '₹/Maund',
-              streamtitletext: 'Kapas Coast',
-              result: reverseanswerMaund,
+            Visibility(
+              visible: false,
+              child: GlobalResultBuilderForResults(
+                substreamtext: '₹/Maund',
+                streamtitletext: 'Kapas Coast',
+                result: reverseanswerMaund,
+              ),
             ),
 
             // Reset Button

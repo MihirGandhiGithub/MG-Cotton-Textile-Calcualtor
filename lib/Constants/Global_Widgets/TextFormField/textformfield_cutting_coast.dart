@@ -114,6 +114,22 @@ class textformfield_cutting_coast extends StatelessWidget {
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.next,
                   onEditingComplete: () => FocusScope.of(context).nextFocus(),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: themeProvider.themeMode.name == 'Light'
+                        ? Colors.white
+                        : Colors
+                            .white10, // Set your desired background color here
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                          70.sp), // Set the circular border radius here
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 5.sp,
+                      ),
+                    ),
+                    contentPadding: EdgeInsets.only(left: 30.sp),
+                  ),
                 ),
               ),
               Container(
@@ -144,6 +160,22 @@ class textformfield_cutting_coast extends StatelessWidget {
                   textInputAction:
                       isLastField ? TextInputAction.done : TextInputAction.next,
                   onEditingComplete: () => FocusScope.of(context).nextFocus(),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: themeProvider.themeMode.name == 'Light'
+                        ? Colors.white
+                        : Colors
+                            .white10, // Set your desired background color here
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                          70.sp), // Set the circular border radius here
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 5.sp,
+                      ),
+                    ),
+                    contentPadding: EdgeInsets.only(left: 30.sp),
+                  ),
                 ),
               ),
               //sub text
@@ -210,7 +242,7 @@ class textformfield_cutting_coast_percentage extends StatelessWidget {
                 child: TextField(
                   textAlign: TextAlign.left,
                   controller: controllerFix,
-                  cursorColor: Colors.black,
+                  // cursorColor: Colors.black,
                   onChanged: onChangedFix,
                   decoration: InputDecoration(
                     filled: true,
@@ -257,12 +289,28 @@ class textformfield_cutting_coast_percentage extends StatelessWidget {
                 child: TextField(
                   textAlign: TextAlign.center,
                   controller: controllerEnterd,
-                  cursorColor: Colors.black,
+                  // cursorColor: Colors.black,
                   onChanged: onChangedEnterd,
                   keyboardType: TextInputType.number,
                   inputFormatters: const [],
                   textInputAction: TextInputAction.next,
                   onEditingComplete: () => FocusScope.of(context).nextFocus(),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: themeProvider.themeMode.name == 'Light'
+                        ? Colors.white
+                        : Colors
+                            .white10, // Set your desired background color here
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                          70.sp), // Set the circular border radius here
+                      borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 5.sp,
+                      ),
+                    ),
+                    contentPadding: EdgeInsets.only(left: 30.sp),
+                  ),
                 ),
               ),
 
@@ -325,10 +373,13 @@ class textformfield_cutting_coast_intrest extends StatelessWidget {
             child: TextField(
               textAlign: TextAlign.left,
               controller: controllerFix,
-              cursorColor: Colors.black,
+              // cursorColor: Colors.black,
               onChanged: onChangedFix,
               // cursorHeight: 60.sp,
-              style: TextStyle(fontSize: 60.sp, color: Colors.black),
+              style: TextStyle(
+                fontSize: 60.sp,
+                // color: Colors.black
+              ),
               decoration: InputDecoration(
                 filled: true,
                 fillColor: themeProvider.themeMode.name == 'Light'
@@ -375,11 +426,26 @@ class textformfield_cutting_coast_intrest extends StatelessWidget {
             child: TextField(
               textAlign: TextAlign.center,
               controller: controllerEnterd,
-              cursorColor: Colors.black,
+              // cursorColor: Colors.black,
               onChanged: onChangedEnterd,
               keyboardType: TextInputType.number,
               textInputAction: TextInputAction.next,
               onEditingComplete: () => FocusScope.of(context).nextFocus(),
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: themeProvider.themeMode.name == 'Light'
+                    ? Colors.white
+                    : Colors.white10, // Set your desired background color here
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                      70.sp), // Set the circular border radius here
+                  borderSide: BorderSide(
+                    color: Colors.black,
+                    width: 5.sp,
+                  ),
+                ),
+                contentPadding: EdgeInsets.only(left: 30.sp),
+              ),
             ),
           ),
           Container(
@@ -405,12 +471,27 @@ class textformfield_cutting_coast_intrest extends StatelessWidget {
             child: TextField(
               textAlign: TextAlign.center,
               controller: controllerAmount,
-              cursorColor: Colors.black,
+              // cursorColor: Colors.black,
               onChanged: onChangedAMount,
               keyboardType: TextInputType.number,
               textInputAction:
                   isLastField ? TextInputAction.done : TextInputAction.next,
               onEditingComplete: () => FocusScope.of(context).nextFocus(),
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: themeProvider.themeMode.name == 'Light'
+                    ? Colors.white
+                    : Colors.white10, // Set your desired background color here
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                      70.sp), // Set the circular border radius here
+                  borderSide: BorderSide(
+                    color: Colors.black,
+                    width: 5.sp,
+                  ),
+                ),
+                contentPadding: EdgeInsets.only(left: 30.sp),
+              ),
             ),
           ),
           //sub text

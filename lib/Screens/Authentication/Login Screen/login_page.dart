@@ -52,6 +52,54 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(
                       child: Lottie.asset('assets/new4.json'),
                     ),
+
+                    // Padding(
+                    //   padding: EdgeInsets.only(bottom: SUheight100h),
+                    //   child: Consumer<firebaseConfigrations>(
+                    //     builder: (context, firebaseConfigration, child) {
+                    //       return firebaseConfigration.isLoadingApple
+                    //           ? const CircularProgressIndicator()
+                    //           : ElevatedButton.icon(
+                    //               style: ElevatedButton.styleFrom(
+                    //                 elevation: 10,
+                    //                 backgroundColor:
+                    //                     themeProvider.themeMode.name == 'Light'
+                    //                         ? Colors.white
+                    //                         : Colors.white60,
+                    //                 shape: RoundedRectangleBorder(
+                    //                   borderRadius:
+                    //                       BorderRadius.circular(50.sp),
+                    //                 ),
+                    //               ),
+                    //               onPressed: () async {
+                    //                 await firebaseConfigration
+                    //                     .signInWithApple(context);
+                    //               },
+                    //               label: Padding(
+                    //                 padding: EdgeInsets.only(
+                    //                   right: SUwidth40w,
+                    //                   left: SUwidth40w,
+                    //                   top: SUheight40h,
+                    //                   bottom: SUheight40h,
+                    //                 ),
+                    //                 child: const Text(
+                    //                   'Continue With Apple',
+                    //                   style: TextStyle(color: Colors.black),
+                    //                 ),
+                    //               ),
+                    //               icon: SizedBox(
+                    //                 width: SUwidth100w,
+                    //                 child: Icon(
+                    //                   Icons.apple,
+                    //                   color: Colors.black,
+                    //                 ),
+                    //               ),
+                    //             );
+                    //     },
+                    //   ),
+                    // ),
+
+                    //Google Signin
                     Padding(
                       padding: EdgeInsets.only(bottom: SUheight100h),
                       child: Consumer<firebaseConfigrations>(

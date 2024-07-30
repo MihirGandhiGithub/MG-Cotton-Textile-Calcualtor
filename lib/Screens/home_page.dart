@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:share_plus/share_plus.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -233,72 +234,73 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  SizedBox(
-                    height: SUheight150h,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(0),
+            if (!Platform.isIOS)
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    SizedBox(
+                      height: SUheight150h,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(0),
+                          ),
                         ),
-                      ),
-                      onPressed: () async {
-                        await showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: Row(
-                                  children: [
-                                    Icon(Icons.logout),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text('LogOut'),
+                        onPressed: () async {
+                          await showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Row(
+                                    children: [
+                                      Icon(Icons.logout),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text('LogOut'),
+                                    ],
+                                  ),
+                                  content: const Text(
+                                      'Are you sure Want To Logout ?'),
+                                  actions: [
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text('No')),
+                                    TextButton(
+                                        onPressed: () async {
+                                          try {
+                                            await firebaseConfigrationInside
+                                                .signOut();
+                                            Navigator.pushReplacementNamed(
+                                                context, '/login_screen');
+                                          } catch (error) {
+                                            SnackBar snackBar = SnackBar(
+                                                content: Text(
+                                                    'Logout error: $error'));
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(snackBar);
+                                          }
+                                        },
+                                        child: const Text('Yes'))
                                   ],
-                                ),
-                                content:
-                                    const Text('Are you sure Want To Logout ?'),
-                                actions: [
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: const Text('No')),
-                                  TextButton(
-                                      onPressed: () async {
-                                        try {
-                                          await firebaseConfigrationInside
-                                              .signOut();
-                                          Navigator.pushReplacementNamed(
-                                              context, '/login_screen');
-                                        } catch (error) {
-                                          SnackBar snackBar = SnackBar(
-                                              content:
-                                                  Text('Logout error: $error'));
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(snackBar);
-                                        }
-                                      },
-                                      child: const Text('Yes'))
-                                ],
-                              );
-                            });
-                      },
-                      child: Text(
-                        'Logout',
-                        style: TextStyle(
-                          fontSize: text60sp,
+                                );
+                              });
+                        },
+                        child: Text(
+                          'Logout',
+                          style: TextStyle(
+                            fontSize: text60sp,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
           ],
         ),
       ),

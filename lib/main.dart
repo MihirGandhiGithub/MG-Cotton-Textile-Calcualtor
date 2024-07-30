@@ -20,22 +20,25 @@ import 'Screens/Sub Screens/9 Cotton Quality/cotton_quality_chart.dart';
 import 'package:provider/provider.dart';
 
 import 'StageManagementClass/provider_state_management.dart';
+import 'dart:io';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize Firebase with the provided configuration
-  await Firebase.initializeApp(
-      // options: const FirebaseOptions(
-      // apiKey: "AIzaSyBKXR-8FgwAFhIlFhe-AUhTyxny4M1PdSU",
-      // authDomain: "mg-textile-calculator.firebaseapp.com",
-      // projectId: "mg-textile-calculator",
-      // storageBucket: "mg-textile-calculator.appspot.com",
-      // messagingSenderId: "669571586292",
-      // appId: "1:669571586292:web:1c4eaa0a39ef38932ba6a1",
-      // measurementId: "G-F4CEEJ887T"
-      //     ),
-      );
+  if (Platform.isIOS) {
+    await Firebase.initializeApp(
+        // options: const FirebaseOptions(
+        // apiKey: "AIzaSyBKXR-8FgwAFhIlFhe-AUhTyxny4M1PdSU",
+        // authDomain: "mg-textile-calculator.firebaseapp.com",
+        // projectId: "mg-textile-calculator",
+        // storageBucket: "mg-textile-calculator.appspot.com",
+        // messagingSenderId: "669571586292",
+        // appId: "1:669571586292:web:1c4eaa0a39ef38932ba6a1",
+        // measurementId: "G-F4CEEJ887T"
+        //     ),
+        );
+  }
 
   // Set preferred orientations
   await SystemChrome.setPreferredOrientations([

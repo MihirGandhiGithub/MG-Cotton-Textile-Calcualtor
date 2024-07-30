@@ -41,13 +41,13 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBKXR-8FgwAFhIlFhe-AUhTyxny4M1PdSU',
-    appId: '1:669571586292:web:5f48c9e53568ad812ba6a1',
-    messagingSenderId: '669571586292',
-    projectId: 'mg-textile-calculator',
-    authDomain: 'mg-textile-calculator.firebaseapp.com',
-    storageBucket: 'mg-textile-calculator.appspot.com',
-    measurementId: 'G-DJZY27RPJ1',
+    apiKey: 'AIzaSyD0Fm_7OTJ9CGL5uag0Z1LaUoV3tZpjxPE',
+    appId: '1:912402332756:web:1a79f0482717a2adf001c1',
+    messagingSenderId: '912402332756',
+    projectId: 'kt-mg-textile-calculator',
+    authDomain: 'kt-mg-textile-calculator.firebaseapp.com',
+    storageBucket: 'kt-mg-textile-calculator.appspot.com',
+    measurementId: 'G-P7FZS2KHQX',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -59,34 +59,31 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA0gswF8msW4XuM2Yd9x06nbKREToelKzg',
-    appId: '1:669571586292:ios:6b5cc658301e3a2c2ba6a1',
-    messagingSenderId: '669571586292',
-    projectId: 'mg-textile-calculator',
-    storageBucket: 'mg-textile-calculator.appspot.com',
-    androidClientId: '669571586292-i8rp0qjg42dqbv274io4ag0canka61f2.apps.googleusercontent.com',
-    iosClientId: '669571586292-728i0iebq73r205hp36hgansdv0jknut.apps.googleusercontent.com',
+    apiKey: 'AIzaSyB0PsgCaosuv63xl-rcJckYBz1XTk-pbWE',
+    appId: '1:912402332756:ios:63baaa9a41289e65f001c1',
+    messagingSenderId: '912402332756',
+    projectId: 'kt-mg-textile-calculator',
+    storageBucket: 'kt-mg-textile-calculator.appspot.com',
     iosBundleId: 'com.mg.cotton.textile.calculator.kt.one.own.mgCottonTextileCalculator',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyA0gswF8msW4XuM2Yd9x06nbKREToelKzg',
-    appId: '1:669571586292:ios:6b5cc658301e3a2c2ba6a1',
-    messagingSenderId: '669571586292',
-    projectId: 'mg-textile-calculator',
-    storageBucket: 'mg-textile-calculator.appspot.com',
-    androidClientId: '669571586292-i8rp0qjg42dqbv274io4ag0canka61f2.apps.googleusercontent.com',
-    iosClientId: '669571586292-728i0iebq73r205hp36hgansdv0jknut.apps.googleusercontent.com',
+    apiKey: 'AIzaSyB0PsgCaosuv63xl-rcJckYBz1XTk-pbWE',
+    appId: '1:912402332756:ios:63baaa9a41289e65f001c1',
+    messagingSenderId: '912402332756',
+    projectId: 'kt-mg-textile-calculator',
+    storageBucket: 'kt-mg-textile-calculator.appspot.com',
     iosBundleId: 'com.mg.cotton.textile.calculator.kt.one.own.mgCottonTextileCalculator',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBKXR-8FgwAFhIlFhe-AUhTyxny4M1PdSU',
-    appId: '1:669571586292:web:1c4eaa0a39ef38932ba6a1',
-    messagingSenderId: '669571586292',
-    projectId: 'mg-textile-calculator',
-    authDomain: 'mg-textile-calculator.firebaseapp.com',
-    storageBucket: 'mg-textile-calculator.appspot.com',
-    measurementId: 'G-F4CEEJ887T',
+    apiKey: 'AIzaSyD0Fm_7OTJ9CGL5uag0Z1LaUoV3tZpjxPE',
+    appId: '1:912402332756:web:260e2260e2ebfb36f001c1',
+    messagingSenderId: '912402332756',
+    projectId: 'kt-mg-textile-calculator',
+    authDomain: 'kt-mg-textile-calculator.firebaseapp.com',
+    storageBucket: 'kt-mg-textile-calculator.appspot.com',
+    measurementId: 'G-FFGMV1YX2F',
   );
+
 }

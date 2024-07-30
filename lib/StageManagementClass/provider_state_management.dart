@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -5,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../AdminPanel/UserModel.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class firebaseConfigrations extends ChangeNotifier {
   static final FirebaseAuth auth = FirebaseAuth.instance;
@@ -17,6 +20,7 @@ class firebaseConfigrations extends ChangeNotifier {
   static String userPhoneNumber = '';
   static String userRole = '';
   bool _isLoading = false;
+  bool _isLoadingApple = false;
   bool _loadUserCount = false;
 
   static String userCount = '';
@@ -35,6 +39,7 @@ class firebaseConfigrations extends ChangeNotifier {
   FirebaseAuth get selectedValue => auth;
   User? get isInitialized => user;
   bool get isLoading => _isLoading;
+  bool get isLoadingApple => _isLoadingApple;
   bool get isloadUserCount => _loadUserCount;
 
   String get userCountg => userCount;
@@ -42,6 +47,7 @@ class firebaseConfigrations extends ChangeNotifier {
   String get appOpenedTodayCountg => appOpenedTodayCount;
   String get todayJointedUserCountg => todayJointedUserCount;
 
+  //Sign in with Google
   Future<void> signInWithGoogle(BuildContext context) async {
     _isLoading = true;
     notifyListeners();
@@ -79,6 +85,51 @@ class firebaseConfigrations extends ChangeNotifier {
       print("Error during Google sign-in: $e");
     } finally {
       _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  //Sign in with apple
+  Future<void> signInWithApple(BuildContext context) async {
+    _isLoadingApple = true;
+    notifyListeners();
+
+    try {
+      final appleCredential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+      );
+      final oauthCredential = OAuthProvider("apple.com").credential(
+        idToken: appleCredential.identityToken,
+        accessToken: appleCredential.authorizationCode,
+      );
+      final UserCredential userCredential =
+          await auth.signInWithCredential(oauthCredential);
+      user = userCredential.user;
+
+      if (appleCredential == null) {
+        _isLoadingApple = false;
+        notifyListeners();
+        return;
+      }
+
+      // Store user information
+      if (user != null) {
+        print('\n apple sign in data is : ${user.toString()} \n');
+        userName = user!.displayName ?? '';
+        userEmail = user!.email ?? '';
+        userPhoneNumber = user!.phoneNumber ?? '';
+        await _createUserDocumentIfNotExists(userCredential);
+        notifyListeners();
+
+        Navigator.pushReplacementNamed(context, '/home_screen');
+      }
+    } catch (e) {
+      print("Error during Apple sign-in: $e");
+    } finally {
+      _isLoadingApple = false;
       notifyListeners();
     }
   }
@@ -389,7 +440,8 @@ class DropdownState extends ChangeNotifier {
 
   void updateValue(String newValue) async {
     _selectedValue = newValue;
-    await _firebaseConfigrations.updateFirebaseRegion(newValue);
+    if (!Platform.isIOS)
+      await _firebaseConfigrations.updateFirebaseRegion(newValue);
     _saveValue(newValue);
     print('New value is $newValue \n \n \n');
     notifyListeners();
