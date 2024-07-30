@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "669571586292",
+    "project_id": "mg-textile-calculator",
+    "storage_bucket": "mg-textile-calculator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669571586292:android:14b663e945d122962ba6a1",
+        "android_client_info": {
+          "package_name": "com.mg.cotton.textile.calculator.kt.one.own.mg_cotton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669571586292-9vbivp7fq9uihsrvgdldgb47b003r99f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCliqraqZPTFQfunPkyJBn11HRKoXEsYxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669571586292-9vbivp7fq9uihsrvgdldgb47b003r99f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "669571586292-728i0iebq73r205hp36hgansdv0jknut.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mg.cotton.textile.calculator.kt.one.own.mgCottonTextileCalculator"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669571586292:android:ee64daa9ace363202ba6a1",
+        "android_client_info": {
+          "package_name": "com.mg.cotton.textile.calculator.kt.one.own.mg_cotton_textile_calculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669571586292-158044numg0tp0h1elvuks8vre0sunl8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mg.cotton.textile.calculator.kt.one.own.mg_cotton_textile_calculator",
+            "certificate_hash": "7307c0bb871879726d642b866758cefa5dce7fab"
+          }
+        },
+        {
+          "client_id": "669571586292-9vbivp7fq9uihsrvgdldgb47b003r99f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCliqraqZPTFQfunPkyJBn11HRKoXEsYxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669571586292-9vbivp7fq9uihsrvgdldgb47b003r99f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "669571586292-728i0iebq73r205hp36hgansdv0jknut.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mg.cotton.textile.calculator.kt.one.own.mgCottonTextileCalculator"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
